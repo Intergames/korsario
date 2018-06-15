@@ -1,0 +1,99 @@
+@charset "utf-8";
+/* CSS Document */
+
+#paginacion_categoria_noticias
+{
+	line-height: 22px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 6px;
+	display:block;
+	text-align:center;
+	width:750px;
+}
+
+table#nav
+{
+  margin: 20;
+}
+
+table#nav td.b a:hover { 
+background-attachment: scroll;
+background-repeat: no-repeat;
+background-position: 0px 0px;
+background-color: transparent;
+background-image: url("assets/next.png");
+color: #ff0000 !important;
+}
+
+table#nav td.cur { 
+background-attachment: scroll;
+background-repeat: no-repeat;
+background-color: transparent;
+background-image: url("assets/pag.png");
+color: #ffffff;
+font-weight: 700;
+background: url("assets/pag.png") no-repeat;
+background-position:0px -47px;
+font-weight: 700;
+}
+table#nav td { 
+vertical-align: top;
+}
+
+td #nav{ 
+display: table-cell;
+padding-top: 1px;
+padding-left: 1px;
+padding-right: 1px;
+padding-bottom: 1px;
+vertical-align: inherit;
+}
+
+table#nav td.b a { 
+background-attachment: scroll;
+background-repeat: no-repeat;
+background-position: 0px 0px;
+background-color: transparent;
+background-image: url("assets/next.png");
+width: 100px;
+padding-left: 5px;
+}
+table#mbEnd, #rhsline, #tads, td.std, p.std, span.std, a.fl { 
+display: none;
+}
+
+table#nav td { 
+vertical-align: top;
+}
+table#nav td.b a { 
+background: url("assets/next.png") no-repeat 0px 0px;
+padding-left: 5px;
+}
+table#nav td.b a:hover { 
+background: url("assets/next.png") no-repeat 0px 0px;
+}
+
+table#nav td a { 
+background: url("assets/pag.png") no-repeat 0px 0px;
+text-decoration: none;
+}
+table#nav td.cur, table#nav td a { 
+width: 30px;
+height: 42px;
+display: block;
+text-align: center;
+margin: 0;
+padding-top: 6px;
+}
+table#nav td a:hover { 
+background-attachment: scroll;
+background-repeat: no-repeat;
+background-position: 0px 100%;
+background-color: transparent;
+background-image: url("assets/pag.png");
+color: #ffffff !important;
+}
+table#nav td a:hover { 
+background: url("assets/pag.png") no-repeat 0px 100%;
+}
