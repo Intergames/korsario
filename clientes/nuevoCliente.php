@@ -12,6 +12,7 @@ require_once('../assets/logs.php');
     <!-- Inicializacion JQuery -->
     <link type="text/css" href="../jquery/css/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
     <script type="text/javascript" src="../jquery/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/validarNuevoCliente.js"></script>
     <script type="text/javascript" src="../jquery/js/jquery-ui-1.8.20.custom.min.js"></script>
     <script type="text/javascript" src="../assets/tiptip/jquery.tipTip.js"></script>
     <!-- Finalizacion JQuery -->
@@ -119,7 +120,7 @@ require_once('../assets/logs.php');
                   </select>
                   </td>
                   <td>Municipio</td>
-                  <td><input name="TxtMunicipio" type="text" id="TxtMunicipio" maxlength="30" class="CajaTexto" title=" Ej. Uruapan" /></td>
+                  <td><input name="TxtMunicipio" type="text" id="TxtMunicipio" maxlength="30" class="CajaTexto" title="Escriba el municipio donde pertenece el cliente Ej. Uruapan" /></td>
                   <td></td>
 
                 </tr>
@@ -155,7 +156,7 @@ require_once('../assets/logs.php');
                 <tr>
                   <td colspan="4"><label>
                     <div align="center">
-                      <input type="submit" name="Submit" value="Guardar" id="Submit" />
+                      <input type="submit" name="GuardarNuevoCliente" value="Guardar" id="GuardarNuevoCliente" class="GuardarNuevoCliente" />
                     </div>
                   </label></td>
                 </tr>

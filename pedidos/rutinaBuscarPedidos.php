@@ -35,7 +35,7 @@ session_start();
  {$pg = 1;}// $pg es la pagina actual
  $cantidad=$_POST['Cantidad']; // cantidad de resultados por página
  $inicial = ($pg-1) * $cantidad; //Calculamos donde se comienzan a mostrar los datos en la consulta.
- mysql_select_db($database_conexion,$conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
+ //mysqli_select_db($conexion, $database_conexion,)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
  
  $sele = "SELECT DISTINCT clientes.Nombre, pedidos.Folio, pedidos.Fecha,pedidos.Status,pedidos.Total,pedidos.NombreUsuario FROM pedidos JOIN clientes on pedidos.IdCliente = clientes.Folio WHERE pedidos.Folio != '' ";
  $contar = "SELECT DISTINCT clientes.Nombre, pedidos.Folio, pedidos.Fecha,pedidos.Status,pedidos.Total,pedidos.NombreUsuario FROM pedidos JOIN clientes on pedidos.IdCliente = clientes.Folio WHERE pedidos.Folio != '' ";
@@ -53,8 +53,8 @@ session_start();
  $sele = $sele." ORDER BY "."$Ordenar $Tipo LIMIT $inicial, $cantidad";
  $contar = $contar." ORDER BY "."$Ordenar $Tipo";
  // echo $sele;
- $result=mysql_query($sele) or die();
-  while($row = mysql_fetch_array($result)) { ?>
+ $result=mysqli_query($conexion,$sele) or die();
+  while($row = mysqli_fetch_array($result)) { ?>
      <tr>
       
         <td align="center">

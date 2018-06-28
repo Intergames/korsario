@@ -5,7 +5,7 @@
         $hostname_conexion = "localhost";
         $database_conexion = "korsario";
         $username_conexion = "root";
-        $password_conexion = "panelas";
+        $password_conexion = "panelas19";
         $conexion = new mysqli($hostname_conexion, $username_conexion, $password_conexion, $database_conexion);
         date_default_timezone_set('America/Mexico_City'); 
         $diaActual= date("d"); $mesActual= date("m"); $yearActual= date("Y");

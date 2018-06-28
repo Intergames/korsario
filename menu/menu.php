@@ -1,6 +1,6 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<?php if ($_SESSION['TipoUsuarioGlobal'] == "root"): ?>
+<?php if ($_SESSION['TipoUsuarioGlobal'] == "root" || $_SESSION['TipoUsuarioGlobal'] == "admin  " ): ?>
 <div class="menu">
     <ul>
     <li><a href="" target="_self" >Nuevo</a>

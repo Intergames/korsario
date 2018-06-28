@@ -35,27 +35,26 @@ require_once('../Connections/conexion.php'); ?>
          $IdCliente = $_POST['IdCliente']; 
          if ($_SESSION["TipoUsuarioGlobal"] == 'root' && $IdCliente != '0')
          {    
-            $IdSucursal = $_POST['LstSucursal'];
-            $Folio = $_POST['TxtFolio'];
-            $Nombre = $_POST['TxtNombre'];
             $RFC = $_POST['TxtRFC'];
-            $CURP = $_POST['TxtCurp'];
+            $Nombre = $_POST['TxtNombre'];
+            $Representante = $_POST['TxtRepresentante'];
             $Calle = $_POST['TxtCalle'];
-            $Ninterior = $_POST['TxtNinterior'];
-            $Nexterior = $_POST['TxtNexterior'];
             $Colonia = $_POST['TxtColonia'];
             $Ciudad = $_POST['TxtCiudad'];
             $Estado = $_POST['LstEstado'];
             $Municipio = $_POST['TxtMunicipio'];
-            $Telefono1 = $_POST['TxtTelefono1'];
-            $Telefono2 = $_POST['TxtTelefono2'];
-            $Telefono3 = $_POST['TxtTelefono3'];
-            $Telefono4 = $_POST['TxtTelefono4'];
+            $CP = $_POST['TxtCP'];
+            if ($CP=="") $CP=0;
+            $Telefono = $_POST['TxtTelefono'];
+            $Celular = $_POST['TxtCelular'];
+            $Fax = $_POST['TxtFax'];
             $email = $_POST['Txtemail'];
-            $SitioWeb = $_POST['TxtSitioWeb'];
-            mysql_select_db($database_conexion, $conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
-            $sql="UPDATE clientes SET IdSucursal='$IdSucursal', Folio='$Folio', Nombre='$Nombre', RFC='$RFC', Calle='$Calle', Ninterior='$Ninterior', Nexterior='$Nexterior' , Colonia='$Colonia' , Ciudad='$Ciudad' , Estado='$Estado' , Municipio='$Municipio' , Telefono1='$Telefono1' , Telefono2='$Telefono2' , Telefono3='$Telefono3' , Telefono4= '$Telefono4'  , email='$email' , SitioWeb='$SitioWeb' WHERE IdCliente ='$IdCliente'";             
-            if (mysql_query($sql))
+            $Descuento = $_POST['TxtDescuento'];
+            $Municipio = $_POST['TxtMunicipio'];
+            if ($Descuento=="") $Descuento=0;
+            $Observaciones = $_POST['TxtObservaciones'];
+            $sql="UPDATE clientes SET RFC='$RFC', Representante='$Representante', Nombre='$Nombre', Calle='$Calle', Colonia='$Colonia', Ciudad='$Ciudad' , Estado='$Estado', Municipio='$Municipio' , CP='$CP' , Telefono='$Telefono' , Celular='$Celular' , Fax='$Fax' , email='$email' , Descuento='$Descuento' , Observaciones= '$Observaciones' WHERE IdCliente = $IdCliente";             
+            if (mysqli_query($conexion,$sql))
                 echo "<p><center>La modificaci&oacute;n del Cliente: ".$Nombre." se ha realizado con &eacute;xito</center></p>";
             else
                 echo "<p><center>La modificaci&oacute;n no se ha podido realizar</center></p><p>$sql</p>";	 

@@ -16,17 +16,14 @@ session_start();
     <table border='0' width = '960px' class='normal'>";
     echo "
     <tr>
-        <th scope='col' width='70'>Codigo</td>
-        <th scope='col' width='70'>Nombre</td>
+        <th scope='col' width='70'>RFC</td>
+        <th scope='col' width='100'>Nombre</td>
         <th scope='col' width='70'>Calle</td>
         <th scope='col' width='100'>Colonia</td>             
         <th scope='col' width='60'>CP</td>
-        <th scope='col' width='100'>Ciudad</td>
-        <th scope='col' width='100'>Estado</td>
-        <th scope='col' width='60'>Tel</td>
-        <th scope='col' width='60'>email</td>
-        <th scope='col' width='100'></td>
-        <th scope='col' width='100'></td>
+        <th scope='col' width='70'>Ciudad</td>
+        <th scope='col' width='80'></td>
+        <th scope='col' width='80'></td>
     </tr>";
  // InicializaciÃ³n de variables para paginaciÃ³n.
  $pg=$_POST['pg']; //Obtenemos la pagina donde desea ir el usuario, obtenida por BuscarCliente.php  
@@ -38,6 +35,7 @@ session_start();
  {$pg = 1;}// $pg es la pagina actual
  $cantidad=$_POST['Cantidad']; // cantidad de resultados por página
  $inicial = ($pg-1) * $cantidad; //Calculamos donde se comienzan a mostrar los datos en la consulta.
+ // mysql_select_db($database_conexion,$conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
  $sele = "SELECT * FROM clientes WHERE IdCliente != 0 ";
  $contar = "SELECT * FROM clientes WHERE Idcliente !=0 ";
  if ($Sucursal != '')
@@ -57,15 +55,12 @@ session_start();
  $result=mysqli_query($conexion,$sele) or die();
   while($row = mysqli_fetch_array($result)) { ?>
      <tr>
-      <td><?php echo $row['Folio']; ?></td>
+      <td><?php echo $row['RFC']; ?></td>
       <td><?php echo $row['Nombre']; ?></td>
       <td><?php echo $row['Calle']; ?></td>
       <td><?php echo $row['Colonia']; ?></td>
       <td><?php echo $row['CP']; ?></td>
       <td><?php echo $row['Ciudad']; ?></td>
-      <td><?php echo $row['Estado']; ?></td>
-      <td><?php echo $row['Telefono1']; ?></td>
-      <td><?php echo $row['email']; ?></td>
       <td><a href="../clientes/detalleCliente.php?recordID=<?php echo $row['IdCliente'];?>" title="Muestra el m&oacute;dulo para editar la informaciÃ³n de la fila resaltada">Detalle</a></td>
       <td><a href="../clientes/editarCliente.php?recordID=<?php echo $row['IdCliente'];?>"><img src="../assets/editar.png" /></a></td>
    </tr>
@@ -77,7 +72,7 @@ session_start();
    @mysqli_free_result($result);
 echo "</table>";
 ?>
-<?php //Inicia paginacion
+<?php //Inicia paginacion vamysql_select_db($database_conexion, $conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error()); 
 $contarok= mysqli_query($conexion,$contar);
 // echo "Esto es contar: ".$contar;
 $total_records = mysqli_num_rows($contarok);

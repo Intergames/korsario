@@ -49,14 +49,12 @@ require_once('../assets/logs.php');
           return $theValue;
         }
     }    
-
-    mysql_select_db($database_conexion, $conexion);
     $query_estados = "SELECT * FROM estados ORDER BY Nombre ASC";
-    $estados = mysql_query($query_estados, $conexion) or die(mysql_error());
-    $row_estados = mysql_fetch_assoc($estados);
-    $total_rows_estados = mysql_num_rows($estados);
+    $estados = mysqli_query($conexion, $query_estados) or die(mysql_error());
+    $row_estados = mysqli_fetch_assoc($estados);
+    $total_rows_estados = mysqli_num_rows($estados);
     ?>
-<title>Nuevo sucursal - Refaccionaria Terry's</title>
+<title>Nuevo sucursal - Korsario</title>
 </head>
 <body>
     <div id="Cabecera">
@@ -105,11 +103,11 @@ require_once('../assets/logs.php');
                               ?>
                               <option value="<?php echo $row_estados['Nombre']?>"><?php echo $row_estados['Nombre']; ?></option>
                               <?php
-                              } while ($row_estados = mysql_fetch_assoc($estados));
-                                $rows = mysql_num_rows($estados);
+                              } while ($row_estados = mysqli_fetch_assoc($estados));
+                                $rows = mysqli_num_rows($estados);
                                 if($rows > 0) {
-                                  mysql_data_seek($estados, 0);
-                                  $row_estados = mysql_fetch_assoc($estados);
+                                  mysqli_data_seek($estados, 0);
+                                  $row_estados = mysqli_fetch_assoc($estados);
                                 }
                             ?>
                         </select>  
@@ -126,7 +124,7 @@ require_once('../assets/logs.php');
           </div><!-- Fin FondoFormularios -->
         </div><!-- Fin MainBody -->
     </form>
-    <div id="footer">
+    <div id="footer"> 
 	<?php include("../assets/Footer.php"); ?>
     </div><!-- Fin footer -->
 </body>

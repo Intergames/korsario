@@ -49,27 +49,16 @@ require_once('../assets/logs.php');
           return $theValue;
         }
     }
-
-    mysql_select_db($database_conexion, $conexion);
-    
     ?>
-
     <?php
-    
     $IdCliente = $_GET['recordID'];
-    mysql_select_db($database_conexion, $conexion);
+    // mysql_select_db($database_conexion, $conexion);
     $query_clientes = "SELECT * FROM clientes WHERE IdCliente = '$IdCliente' ";
-    $clientes = mysql_query($query_clientes, $conexion) or die(mysql_error());
-    $detalle_cliente = mysql_fetch_assoc($clientes);
-
+    $clientes = mysqli_query($conexion, $query_clientes) or die(mysql_error());
+    $detalle_cliente = mysqli_fetch_assoc($clientes);
     $IdSucursal = $detalle_cliente['IdSucursal'];
-    // echo "Este es el ID de la sucursal: ".$IdSucursal;
-    $query_sucursales = "SELECT IdSucursal, NombreSucursal FROM sucursales WHERE IdSucursal = $IdSucursal";
-    $sucursales = mysql_query($query_sucursales, $conexion) or die(mysql_error());
-    $detalle_sucursal= mysql_fetch_assoc($sucursales);
-    
     ?>
-<title>Detalle de cliente - Bardahl</title>
+<title>Detalle de cliente - El Korsario</title>
 </head>
 <body>
     <div id="Cabecera">
@@ -90,44 +79,28 @@ require_once('../assets/logs.php');
             <center>
               <table border="0">
                 <tr>
-                  <td>Sucursal:</td>
-                    <td><?php echo $detalle_sucursal['NombreSucursal']; ?></td>
+                  <td>RFC:</td>
+                    <td><?php echo $detalle_cliente['RFC']; ?></td>
                 </tr>
                 <tr>
-                  <td>Folio:</td>
-                    <td><?php echo $detalle_cliente['Folio']; ?></td>
+                  <td>Representante:</td>
+                    <td><?php echo $detalle_cliente['Representante']; ?></td>
                 </tr>
                 <tr>
                   <td>Nombre:</td>
                   <td><?php echo $detalle_cliente['Nombre']; ?></td>
                 </tr>                
                 <tr>
-                  <td>RFC:</td>
-                  <td><?php echo $detalle_cliente['RFC']; ?></td>
-                </tr>
-                <tr>
-                  <td>Curp:</td>
-                  <td><?php echo $detalle_cliente['CURP']; ?></td>
-                </tr>
-                <tr>
                   <td>Calle:</td>
                   <td><?php echo $detalle_cliente['Calle']; ?></td>
-                </tr>
-                <tr>
-                  <td>Número Interior:</td>
-                  <td><?php echo $detalle_cliente['Ninterior']; ?></td>
-                </tr>
-                <tr>
-                  <td>Número Exterior:</td>
-                  <td><?php echo $detalle_cliente['Nexterior']; ?></td>
                 </tr>
                 <tr>
                   <td>Colonia:</td>
                   <td><?php echo $detalle_cliente['Colonia']; ?></td>
                 </tr>
                 <tr>
-                  <td>Código Postal:</td>
-                  <td><?php echo $detalle_cliente['CP']; ?></td>
+                  <td>Ciudad:</td>
+                  <td><?php echo $detalle_cliente['Ciudad']; ?></td>
                 </tr>
                 <tr>
                   <td>Estado:</td>
@@ -138,28 +111,32 @@ require_once('../assets/logs.php');
                   <td><?php echo $detalle_cliente['Municipio']; ?></td>
                 </tr>
                 <tr>
-                  <td>Telefono1:</td>
-                  <td><?php echo $detalle_cliente['Telefono1']; ?></td>
+                  <td>Código Postal:</td>
+                  <td><?php echo $detalle_cliente['CP']; ?></td>
                 </tr>
                 <tr>
-                  <td>Telefono2:</td>
-                  <td><?php echo $detalle_cliente['Telefono2']; ?></td>
+                  <td>Telefono Fijo:</td>
+                  <td><?php echo $detalle_cliente['Telefono']; ?></td>
                 </tr>
                 <tr>
-                  <td>Telefono3:</td>
-                  <td><?php echo $detalle_cliente['Telefono3']; ?></td>
+                  <td>Celular:</td>
+                  <td><?php echo $detalle_cliente['Celular']; ?></td>
                 </tr>
                 <tr>
-                  <td>Telefono4:</td>
-                  <td><?php echo $detalle_cliente['Telefono4']; ?></td>
+                  <td>Fax:</td>
+                  <td><?php echo $detalle_cliente['Fax']; ?></td>
                 </tr>
                 <tr>
                   <td>email:</td>
                   <td><?php echo $detalle_cliente['email']; ?></td>
                 </tr>
                 <tr>
-                  <td>SitioWeb:</td>
-                  <td><?php echo $detalle_cliente['SitioWeb']; ?></td>
+                  <td>Descuento:</td>
+                  <td><?php echo $detalle_cliente['Descuento']; ?></td>
+                </tr>
+                <tr>
+                  <td>Observaciones:</td>
+                  <td><?php echo $detalle_cliente['Observaciones']; ?></td>
                 </tr>
                 <tr>
                   <td colspan="2" align="center"><a href="./buscarCliente.php">Regresar</a></td>

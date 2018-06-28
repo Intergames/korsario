@@ -32,10 +32,10 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-mysql_select_db($database_conexion, $conexion);
+//mysql_select_db($database_conexion, $conexion);
 $query_sucursales = "SELECT IdSucursal, NombreSucursal FROM sucursales ORDER BY IdSucursal ASC";
-$sucursales = mysql_query($query_sucursales, $conexion) or die(mysql_error());
-$row_sucursales = mysql_fetch_assoc($sucursales);
+$sucursales = mysqli_query($conexion, $query_sucursales);
+$row_sucursales = mysqli_fetch_assoc($sucursales);
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -121,7 +121,7 @@ $row_sucursales = mysql_fetch_assoc($sucursales);
 </div> <!-- Fin footer-->
 </body>
 <?php
-mysql_free_result($sucursales);
+mysqli_free_result($sucursales);
 ?>
 <?php
 else:

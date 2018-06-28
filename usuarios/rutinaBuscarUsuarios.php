@@ -35,7 +35,7 @@ session_start();
  {$pg = 1;}// $pg es la pagina actual
  $cantidad=$_POST['Cantidad']; // cantidad de resultados por página
  $inicial = ($pg-1) * $cantidad; //Calculamos donde se comienzan a mostrar los datos en la consulta.
- mysql_select_db($database_conexion,$conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
+ //mysql_select_db($database_conexion,$conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
  $sele = "SELECT * FROM usuarios WHERE IdUsuario != 0 ";
  $contar = "SELECT * FROM usuarios WHERE IdUsuario !=0 ";
  if ($Sucursal != '')
@@ -53,13 +53,13 @@ session_start();
  $contar = $contar." ORDER BY "."$Ordenar $Tipo";
  // echo $sele;
 
- $result=mysql_query($sele) or die();
+ $result=mysqli_query($conexion, $sele) or die();
 
-  while($row = mysql_fetch_array($result)) { 
+  while($row = mysqli_fetch_array($result)) { 
     $IdSucursal = $row['IdSucursal'];
     $sqlSucursal = "SELECT NombreSucursal FROM sucursales WHERE IdSucursal = '$IdSucursal'";
-    $resultadoSucursal = mysql_query($sqlSucursal);
-    $detalleSucursal = mysql_fetch_assoc($resultadoSucursal);
+    $resultadoSucursal = mysqli_query($conexion,$sqlSucursal);
+    $detalleSucursal = mysqli_fetch_assoc($resultadoSucursal);
     ?>
      <tr>
       <td><?php echo $row['Usuario']; ?></td>
@@ -74,15 +74,15 @@ session_start();
 <?php
 }//Fin de while($row = mysql_fetch_array($result))
     
-   if (mysql_num_rows($result) == 0)
+   if (mysqli_num_rows($result) == 0)
       echo "<p><center>No se encontraron usurios con los parámetros de búsqueda especificados.</center></p>";
-   @mysql_free_result($result);
+   @mysqli_free_result($result);
 echo "</table>";
 ?>
 <?php //Inicia paginacion
-mysql_select_db($database_conexion, $conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
-$contarok= mysql_query($contar);
-$total_records = mysql_num_rows($contarok);
+//mysql_select_db($database_conexion, $conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
+$contarok= mysqli_query($conexion, $contar);
+$total_records = mysqli_num_rows($contarok);
 $Paginas = intval($total_records / $cantidad);
 $haymaspaginas = $total_records%$cantidad;
 if ($haymaspaginas != 0)

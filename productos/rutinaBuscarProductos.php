@@ -21,10 +21,7 @@ session_start();
         <th scope='col' width='50'>Cantidad</td>             
         <th scope='col' width='150'>Descripcion</td>
         <th scope='col' width='50'>Marca</td>
-        <th scope='col' width='60'>Revendedor</td>
-        <th scope='col' width='60'>Gasolinero</td>
-        <th scope='col' width='60'>G500</td>
-        <th scope='col' width='60'>P. Especial</td>
+        <th scope='col' width='60'>Precio</td>
         <th scope='col' width='50'></td>
         <th scope='col' width='50'></td>
         <th scope='col' width='50'></td>
@@ -65,9 +62,6 @@ session_start();
       <td><?php echo $row['Descripcion']; ?></td>
       <td><?php echo $row['Marca']; ?></td>
       <td><?php echo "$".truncateFloat($row['PrecioVenta'],2); ?></td>
-      <td><?php echo "$".truncateFloat($row['PrecioVentaEspecial'],2); ?></td>
-      <td><?php echo "$".truncateFloat($row['G500'],2); ?></td>
-      <td><?php echo "$".truncateFloat($row['GEspecial'],2); ?></td>
       <td><a href="../productos/detalleProducto.php?recordID=<?php echo $row['IdProducto'];?>" title="Muestra el m&oacute;dulo para editar la informaciÃ³n de la fila resaltada">Detalle</a></td>
       <td>
         <a onclick="return confirmar()" href="../productos/procesarEliminarProducto.php?recordID=<?php echo $row['IdProducto']; ?>"><img src="../assets/Eliminar.PNG" class="Icono" title="Elimina el producto de la fila resaltada, previa confirmación del usuario" />

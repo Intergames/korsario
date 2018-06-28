@@ -50,19 +50,19 @@ require_once('../assets/logs.php');
         }
     }
 
-    mysql_select_db($database_conexion, $conexion);
+    //mysql_select_db($database_conexion, $conexion);
     $query_Estados = "SELECT * FROM estados ORDER BY Nombre ASC";
-    $Estados = mysql_query($query_Estados, $conexion) or die(mysql_error());
-    $row_Estados = mysql_fetch_assoc($Estados);
-    $totalRows_Estados = mysql_num_rows($Estados);
+    $Estados = mysqli_query($conexion, $query_Estados) or die(mysql_error());
+    $row_Estados = mysqli_fetch_assoc($Estados);
+    $totalRows_Estados = mysqli_num_rows($Estados);
 
-    mysql_select_db($database_conexion, $conexion);
+    //mysql_select_db($database_conexion, $conexion);
     $query_sucursales = "SELECT IdSucursal, NombreSucursal FROM sucursales ORDER BY IdSucursal ASC";
-    $sucursales = mysql_query($query_sucursales, $conexion) or die(mysql_error());
-    $row_sucursales = mysql_fetch_assoc($sucursales);
-    $conteo_row_sucursales = mysql_num_rows($sucursales);
+    $sucursales = mysqli_query($conexion, $query_sucursales) or die(mysql_error());
+    $row_sucursales = mysqli_fetch_assoc($sucursales);
+    $conteo_row_sucursales = mysqli_num_rows($sucursales);
     ?>
-<title>Nuevo Usuario - Bardahl</title>
+<title>Nuevo Usuario - Korsario</title>
 </head>
 <body>
     <div id="Cabecera">
@@ -157,11 +157,8 @@ require_once('../assets/logs.php');
                 <tr>
                   <td>Colonia: </td>
                   <td><input name="TxtColonia" type="text" id="TxtColonia" maxlength="30" class="CajaTexto" tabindex="9" title="Colonia donde vive el usuario." /></td>
-                  <td>Donador de Organos</td>
-                  <td><select name="LstDonadorOrganos" id="LstDonadorOrganos" tabindex="19">
-                    <option value="Si">Si</option>
-                    <option value="No" selected="selected">No</option>
-                  </select></td>
+                  <td></td>
+                  <td></td>
                 </tr>                
                 <tr>
                   <td>Codigo Postal:</td>

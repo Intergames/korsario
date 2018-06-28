@@ -34,7 +34,7 @@ session_start();
  {$pg = 1;}// $pg es la pagina actual
  $cantidad=$_POST['Cantidad']; // cantidad de resultados por página
  $inicial = ($pg-1) * $cantidad; //Calculamos donde se comienzan a mostrar los datos en la consulta.
- mysql_select_db($database_conexion,$conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
+ //mysql_select_db($database_conexion,$conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
  $sele = "SELECT * FROM sucursales WHERE IdSucursal != 0 ";
  $contar = "SELECT * FROM sucursales WHERE IdSucursal !=0 ";    
  if ($Busqueda != '')
@@ -46,8 +46,8 @@ session_start();
  $sele = $sele." ORDER BY "."$Ordenar $Tipo LIMIT $inicial, $cantidad";
  $contar = $contar." ORDER BY "."$Ordenar $Tipo";
  // echo $sele;
- $result=mysql_query($sele) or die();
-  while($row = mysql_fetch_array($result)) { ?>
+ $result=mysqli_query($conexion, $sele) or die();
+  while($row = mysqli_fetch_array($result)) { ?>
      <tr>
       <td><?php echo $row['NombreSucursal']; ?></td>
       <td><?php echo $row['Direccion']; ?></td>
@@ -61,15 +61,15 @@ session_start();
 <?php
 }//Fin de while($row = mysql_fetch_array($result))
     
-   if (mysql_num_rows($result) == 0)
+   if (mysqli_num_rows($result) == 0)
       echo "<p><center>No se encontraron usurios con los parámetros de búsqueda especificados.</center></p>";
    @mysql_free_result($result);
 echo "</table>";
 ?>
 <?php //Inicia paginacion
-mysql_select_db($database_conexion, $conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
-$contarok= mysql_query($contar);
-$total_records = mysql_num_rows($contarok);
+//mysql_select_db($database_conexion, $conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
+$contarok= mysqli_query($conexion,$contar);
+$total_records = mysqli_num_rows($contarok);
 $Paginas = intval($total_records / $cantidad);
 $haymaspaginas = $total_records%$cantidad;
 if ($haymaspaginas != 0)

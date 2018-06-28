@@ -31,9 +31,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
-
+// mysql_select_db($database_conexion, $conexion);
 $query_sucursales = "SELECT IdSucursal, NombreSucursal FROM sucursales ORDER BY IdSucursal ASC";
-$sucursales = mysqli_query($conexion,$query_sucursales);
+$sucursales = mysqli_query($conexion,$query_sucursales) or die(mysql_error());
 $row_sucursales = mysqli_fetch_assoc($sucursales);
 
 ?>
@@ -51,7 +51,7 @@ $row_sucursales = mysqli_fetch_assoc($sucursales);
     <link href="../css/Paginacion.css" rel="stylesheet" type="text/css" />
     <script tyoe="text/javascript" src="../js/ajaxBuscarClientes.js"></script> 
     <script type="text/javascript" src="../assets/tiptip/jquery.tipTip.js"></script>
-    <title>B&uacute;squeda de Clientes - Bardahl</title>
+    <title>B&uacute;squeda de Clientes - El Korsario</title>
 </head>
 <body onload="cargaXMLClientes('rutinaBuscarClientes.php','1')">
 <div id="Cabecera">
@@ -83,11 +83,11 @@ $row_sucursales = mysqli_fetch_assoc($sucursales);
             ?>
           <option value="<?php echo $row_sucursales['IdSucursal']?>"><?php echo $row_sucursales['NombreSucursal']?></option>
           <?php
-            } while ($row_sucursales = mysql_fetch_assoc($sucursales));
-              $rows = mysql_num_rows($sucursales);
+            } while ($row_sucursales = mysqli_fetch_assoc($sucursales));
+              $rows = mysqli_num_rows($sucursales);
               if($rows > 0) {
-                mysql_data_seek($sucursales, 0);
-                $row_sucursales = mysql_fetch_assoc($sucursales);
+                mysqli_data_seek($sucursales, 0);
+                $row_sucursales = mysqli_fetch_assoc($sucursales);
               }
             ?>
         </select></td>
@@ -113,9 +113,6 @@ $row_sucursales = mysqli_fetch_assoc($sucursales);
             <option value="Colonia">Colonia</option>
             <option value="CP">C&oacute;digo Postal</option>
             <option value="Ciudad">Ciudad</option>
-            <option value="Estado">Estado</option>
-            <option value="Telefono1">Tel&eacute;fono</option>
-            <option value="email">email</option>
           </select></td>
           <td width="134">&nbsp;</td>
           <td width="100">Tipo:</td>
@@ -140,7 +137,7 @@ $row_sucursales = mysqli_fetch_assoc($sucursales);
 </div> <!-- Fin footer-->
 </body>
 <?php
-mysql_free_result($sucursales);
+mysqli_free_result($sucursales);
 ?>
 <?php
 else:

@@ -10,7 +10,7 @@ if ($_SESSION["TipoUsuarioGlobal"] =='root' ):
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../css/MainStyle.css" rel="stylesheet" type="text/css" />
     <link href="../menu/menu_style.css" rel="stylesheet" type="text/css" />
-    <title>Procesado de Nuevas Clientes - Bardahal</title>
+    <title>Procesado de Nuevas Clientes - El Korsario</title>
 </head>
 <body>
     <div id="Cabecera">
@@ -41,12 +41,13 @@ if ($_SESSION["TipoUsuarioGlobal"] =='root' ):
             $Fax = $_POST['TxtFax'];
             $email = $_POST['Txtemail'];
             $Descuento = $_POST['TxtDescuento'];
+            $Municipio = $_POST['TxtMunicipio'];
             if ($Descuento=="") $Descuento=0;
             $Observaciones = $_POST['TxtObservaciones'];
             $sql="INSERT INTO `clientes`
-            (`RFC` , `Representante` ,  `Nombre` , `Calle` , `Colonia`, `Ciudad`, `Estado`, `CP`, `Telefono`, `Celular`, `Fax`, `email`,  `Descuento` , `Observaciones`)
+            (`RFC` , `Representante` ,  `Nombre` , `Calle` , `Colonia`, `Ciudad`, `Estado`, `Municipio`, `CP`, `Telefono`, `Celular`, `Fax`, `email`,  `Descuento` , `Observaciones`)
             VALUES 
-            ('$RFC' , '$Representante' , '$Nombre' , '$Calle'  ,'$Colonia' ,'$Ciudad' ,'$Estado' ,'$CP', '$Telefono' ,'$Celular','$Fax','$email','$Descuento','$Observaciones')";
+            ('$RFC' , '$Representante' , '$Nombre' , '$Calle'  ,'$Colonia' ,'$Ciudad' ,'$Estado' ,'$Municipio', '$CP', '$Telefono' ,'$Celular','$Fax','$email','$Descuento','$Observaciones')";
             echo "Estas son las observaciones: ".$Observaciones;
             if (!mysqli_query($conexion,$sql))
             {

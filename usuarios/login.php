@@ -21,7 +21,7 @@ require_once('../assets/logs.php');
         $(".CajaTexto").tipTip({maxWidth: "auto", defaultPosition:"right"});
     });
     </script>
-<title>Inicio de sesion de Usuario - Bardahl</title>
+<title>Inicio de sesion de Usuario - Korsario</title>
 </head>
 <body>
     <div id="Cabecera">

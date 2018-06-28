@@ -32,10 +32,10 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-mysql_select_db($database_conexion, $conexion);
+//mysql_select_db($database_conexion, $conexion);
 $query_sucursales = "SELECT IdSucursal, NombreSucursal FROM sucursales ORDER BY IdSucursal ASC";
-$sucursales = mysql_query($query_sucursales, $conexion) or die(mysql_error());
-$row_sucursales = mysql_fetch_assoc($sucursales);
+$sucursales = mysqli_query($conexion, $query_sucursales) or die(mysql_error());
+$row_sucursales = mysqli_fetch_assoc($sucursales);
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -147,10 +147,7 @@ $row_sucursales = mysql_fetch_assoc($sucursales);
             ?>
         </select></p>
         <?php endif; ?>
-         Por favor escriba el ultimo folio capturado dentro de Adminpaq: 
-         <input type="text" name="ultimoFolio" class="ultimoFolio" id="ultimoFolio" />
        </p>
-       <input type="submit" name="enviar" value="Pasar a Facturados">
      </div> <!-- Fin FondoFormulariosDashboard -->    
     </div>
     </form>

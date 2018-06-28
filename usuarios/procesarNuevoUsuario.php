@@ -50,14 +50,14 @@
             $GrupoSanguineo = $_POST['TxtGrupoSanguineo'];
             $DonadorOrganos = $_POST['LstDonadorOrganos'];
             $ContactoEmergencia = $_POST['TxtContactoEmergencia'];
-            mysql_select_db($database_conexion, $conexion) or die ("ERROR AL ESCOJER LA BD :".mysql_error());
+            //mysql_select_db($database_conexion, $conexion) or die ("ERROR AL ESCOJER LA BD :".mysql_error());
             $sql="INSERT INTO `usuarios`
             (`IdRuta` ,`IdSucursal` , `Usuario` ,  `TipoUsuario` ,  `Psswrd` , `Nombre` , `Calle` , `Nexterior`, `Ninterior`, `Colonia`, `CP`, `Puesto`, `TelefonoEmpresa`, `TelefonoParticular`, `TelefonoParticular2`, `email`, `NSS`, `RFC`, `FechaIngreso`, `TelContacto`, `GrupoSanguineo`, `DonadorOrganos`, `ContactoEmergencia`)
             VALUES 
             ('$IdRuta' , '$IdSucursal' , '$Usuario' , '$TipoUsuario' , '$Psswrd' , '$Nombre'  ,'$Calle' ,'$Nexterior', '$Ninterior' ,'$Colonia' ,'$CP','$Puesto','$TelefonoEmpresa','$TelefonoParticular','$TelefonoParticular2','$email','$NSS','$RFC','$FechaIngreso','$TelContacto','$GrupoSanguineo','$DonadorOrganos','$ContactoEmergencia')";
-            if (!mysql_query($sql))
+            if (!mysqli_query($conexion,$sql))
             {
-                echo "Se ha generado el siguiente error: ".mysql_error().$sql;
+                echo "Se ha generado el siguiente error: ".$sql;
             }
             else
             {
