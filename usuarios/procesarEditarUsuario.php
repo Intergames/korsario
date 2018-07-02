@@ -48,12 +48,12 @@ require_once('../Connections/conexion.php'); ?>
             $CodigoPostal = $_POST['TxtCodigoPostal'];                   
             $Puesto = $_POST['TxtPuesto'];                   
             //mysql_select_db($database_conexion, $conexion)or die ("ERROR AL ESCOJER LA BD :".mysql_error());
-            $sql="UPDATE usuarios SET IdSucursal='$Sucursal', IdRuta='$IdRuta', Usuario='$Usuario', RutaImagen='$RutaImagen', TipoUsuario='$TipoUsuario', Psswrd='$Password', Nombre='$Nombre', Calle='$Domicilio', Colonia='$Colonia' , CP='$CodigoPostal', Puesto='$Puesto', Codigo = '$Codigo'  WHERE IdUsuario ='$IdUsuario'";             
+            $sql="UPDATE usuarios SET IdSucursal='$Sucursal', Usuario='$Usuario', TipoUsuario='$TipoUsuario', Psswrd='$Password', Nombre='$Nombre', Calle='$Domicilio', Colonia='$Colonia' , CP='$CodigoPostal', Puesto='$Puesto', Codigo = '$Codigo'  WHERE IdUsuario ='$IdUsuario'";             
             // echo "Este es el sql: ".$sql;
             if (mysqli_query($conexion, $sql))
                 echo "<p><center>La modificaci&oacute;n del Usuario:".$Nombre." se ha realizado con &eacute;xito</center></p>";
             else
-                echo "<p><center>La modificaci&oacute;n no se ha podido realizar:".mysql_error()."</center></p>";	 
+                echo "<p><center>La modificaci&oacute;n no se ha podido realizar:".$sql."</center></p>";	 
          }
          else
          {
